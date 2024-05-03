@@ -9,6 +9,11 @@ struct User
 {
 	string username, password;
 	bool isActive;
+
+	User()
+	{
+		isActive = false;
+	}
 };
 
 User table[TABLE_SIZE];
