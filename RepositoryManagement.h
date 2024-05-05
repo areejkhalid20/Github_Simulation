@@ -14,7 +14,6 @@ struct FileNode
 	}
 };
 
-
 //this structure will hold the content of the each commit node
 struct commit
 {
@@ -51,8 +50,9 @@ struct Repository
 
 void initializeRepo();
 Repository* CreateRepo(Repository* root, const string &RepoName, bool isPublic);
-void DeleteRepo(Repository* &root,const string&RepoName);
+Repository* deleteRepository(Repository* root, const std::string& RepoName); 
 void AddCommit(Repository* repo,const string& commitMsg,const string fileName);
+Repository* findRepository(Repository* root, const std::string& RepoName);  
 void displayRepositories(Repository* root);
 
 #endif 

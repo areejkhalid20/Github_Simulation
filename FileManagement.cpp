@@ -2,34 +2,42 @@
 #include "RepositoryManagement.h"
 #include "UserManagement.h"
 
+//this file is used to add files to the repository 
 void AddFile(Repository* repo, const string& fileName)
 {
-    if (!repo || !repo->commitHead) return; // Ensure repo and the last commit exist
+    if (!repo || !repo->commitHead)
+    {
+        return;
+    }
 
-    // Create a new file node
     FileNode* newFile = new FileNode(fileName);
-    // Add to the start of the commit's file list
+    //adding to the start of the commit's file list
     newFile->next = repo->commitHead->fileHead;
     repo->commitHead->fileHead = newFile;
 }
-
-
-void DeleteFile(Repository* repo, const string& fileName)
+//this file is used to delete files from the repository
+void deleteFileFromRepo(Repository* repo, const string& fileName) 
 {
-    if (!repo || !repo->commitHead || !repo->commitHead->fileHead) return;
+    if (!repo || !repo->commitHead || !repo->commitHead->fileHead)
+    {
+        return;
+    }
 
     FileNode* curr = repo->commitHead->fileHead;
     FileNode* prev = nullptr;
 
-    while (curr)
+    while (curr) 
     {
-        if (curr->fileName == fileName)
+        if (curr->fileName == fileName) 
         {
-            if (prev)
+            if (prev) 
+            {
                 prev->next = curr->next;
-            else
+            }
+            else 
+            {
                 repo->commitHead->fileHead = curr->next;
-
+            }
             delete curr;
             return;
         }
