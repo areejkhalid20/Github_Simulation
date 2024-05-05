@@ -1,6 +1,6 @@
 #include "UserGraph.h"
 #include <iostream>
-using namespace std;
+
 
 UserGraph::UserGraph() : userCount(0) 
 {

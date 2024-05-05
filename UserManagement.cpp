@@ -1,8 +1,10 @@
 #include<iostream>
 #include"UserManagement.h"
 #include "Utilities.h"
-
 using namespace std;
+
+User table[TABLE_SIZE];
+
 
 //creating a structure to store user name and password
 struct User
@@ -15,8 +17,6 @@ struct User
 		isActive = false;
 	}
 };
-
-User table[TABLE_SIZE];
 
 //this function is used to initialize the table 
 void initUserTable()
@@ -78,6 +78,7 @@ bool LoginUser(const string& username, const string& password)
 	return false;
 }
 
+//this function is used to view the user profile 
 void ViewProfile(const string& username)
 {
 	int i = hashFunc(username);
