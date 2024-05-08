@@ -1,8 +1,17 @@
 #ifndef FILEMANAGEMENT_H
 #define FILEMANAGEMENT_H
-#include "RepositoryManagement.h"
+#include <string>
 
-void AddFile(Repository* repo, const string& fileName);
-void deleteFileFromRepo(Repository* repo, const string& fileName);
+using namespace std;
 
-#endif
+class File
+{
+public:
+    string filename;
+    string content;
+    File* next;
+
+    File(string name, string data);
+};
+
+#endif 

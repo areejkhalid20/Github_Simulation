@@ -1,22 +1,19 @@
 #ifndef USER_H
 #define USER_H
-#include <string>
-using namespace std;
+#include "RepositoryManagement.h"
 
 class User 
 {
 public:
     string username;
-    //default constructor
-    User()
-    {
-        username = "";
-    }
-    //parameterized constructor 
-    User(string username)
-    {
-        username = username;
-    }
+    string password;
+    User* followers;
+    Repository** repositories;
+    int numFollowers;
+    int numRepositories;
+
+    User(string uname, string pwd);
+    ~User();
 };
 
-#endif
+#endif 

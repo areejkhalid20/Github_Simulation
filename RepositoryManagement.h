@@ -1,58 +1,20 @@
-#ifndef REPOSITORYMANAGEMENT_H
-#define REPOSITORYMANAGEMENT_H
-#include<string>
-using namespace std;
+#ifndef REPOSITORY_H
+#define REPOSITORY_H
+#include "Commit.h"
+#include "FileManagement.h"
 
-struct FileNode 
+class Repository
 {
-	string fileName;
-	FileNode* next;
-	FileNode(string name)
-	{
-		fileName = name;
-		next = NULL;
-	}
+public:
+    string repoName;
+    bool isPublic;
+    int forkCount;
+    Commit* headCommit;
+    File* fileHead;
+
+    Repository(string name, bool visibility);
+    void addCommit(string message, string time);
+    void addFile(string name, string content);
 };
-
-//this structure will hold the content of the each commit node
-struct commit
-{
-	string commitMsg; //this will store the message that the user will provide with each commit 
-	commit* next;
-	FileNode* fileHead;
-
-	//constructor
-	commit(string msg)
-	{
-		commitMsg = msg;
-		next = NULL;
-		fileHead = NULL;
-	}
-};
-
-//this structure will hold the content of the each repository node
-struct Repository
-{
-	string RepoName;
-	bool isPublic;
-	Repository* left,*right;
-	commit* commitHead;
-
-	//constructor 
-	Repository(string name, bool visibilty)
-	{
-		RepoName = name;
-		isPublic = visibilty;
-		commitHead = NULL;
-		left = right = NULL;
-	}
-};
-
-void initializeRepo();
-Repository* CreateRepo(Repository* root, const string &RepoName, bool isPublic);
-Repository* deleteRepository(Repository* root, const std::string& RepoName); 
-void AddCommit(Repository* repo,const string& commitMsg,const string fileName);
-Repository* findRepository(Repository* root, const std::string& RepoName);  
-void displayRepositories(Repository* root);
 
 #endif 
